@@ -15,7 +15,18 @@ Route::get('/', function () {
     return view('blog.index');
 })->name('blog.index');
 
-Route::get('post/{id}', function() {
+Route::get('post/{id}', function($id) {
+    if ($id == 1) {
+        $post = [
+            'title' => 'this is the title',
+            'content' => 'this is the content'
+        ];
+    } else {
+        $post = [
+            'title' => 'this is a different title',
+            'content' => 'this is some other content'
+        ];
+    }
     return view('blog.post');
 })->name('blog.post');
 
@@ -38,7 +49,18 @@ Route::group(['prefix' => 'admin'], function() {
         return "admin.create is working";
     })->name('admin.create');
 
-    Route::get('edit/{id}', function() {
+    Route::get('edit/{id}', function($id) {
+        if ($id == 1) {
+            $post = [
+                'title' => 'this is the title',
+                'content' => 'this is the content'
+            ];
+        } else {
+            $post = [
+                'title' => 'this is a different title',
+                'content' => 'this is some other content'
+            ];
+        }
         return view('admin.edit');
     })->name('admin.edit');
 
